@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function Stack() {
+        this.dataStore=[];
+        this.push=function (element) {
+            this.dataStore[this.dataStore.length]=element;
+        }
+
+        this.pop=function(){
+            if(this.dataStore.length<1)
+                return null;
+            //取得最后的数据
+            var buffer = this.dataStore[this.dataStore.length-1];
+            //把最后的数据置空
+            this.dataStore[this.dataStore.length-1]=null;
+            //改变数组的长度
+            this.dataStore.length--;
+            //返回数据
+            return buffer;
+        }
+
+        this.peek=function () {
+            //返回数据
+            return this.dataStore[this.dataStore.length-1];
+        }
+
+        this.length = function () {
+            return this.dataStore.length;
+        }
+
+        this.clear=function () {
+            delete this.dataStore;
+            this.dataStore=[];
+        }
+
+        this.forEach=function (call) {
+            //1,获得数组的长度
+            var length = this.dataStore.length;
+            //2,遍历数据
+            for(var i=length-1;i>=0;i--){
+                // var item= this.dataStore[i];
+                call(this.dataStore[i]);
+            }
+        }
+
+
+    }
+    //1,创建一个堆栈
+    var stack = new Stack();
+    stack.push('红');
+    stack.push('白');
+    stack.push('黄');
+    stack.push('红');
+    stack.push('黄');
+    stack.push('黄');
+    stack.push('红');
+    stack.push('白');
+    var stack1=new Stack();
+    stack.forEach(function (item) {
+
+        if(item!='黄'){
+            stack1.push(item);
+        }
+
+    })
+    stack1.forEach(function (data) {
+        console.log(data);
+    })
+
+
+</script>
+</html>

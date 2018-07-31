@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>统计一个字符串出现最多的字母</h1>
+</body>
+<script>
+    var str='afjghdfraaaasdenas';
+ /*   // 1.将字符串转换成数组
+    var newArr = str.split("");
+    // 2.创建一个对象
+    var json = [];
+    // 3.遍历数组，判断对象中是否存在数组中的值，如果存在值+1，不存在赋值为1
+    for(var i = 0;i< newArr.length;i++){
+        if(json[newArr[i]]){
+            json[newArr[i]] +=1;
+        }else{
+            json[newArr[i]] = 1;
+        }
+    }
+    // 4 定义两个变量存储字符值，字符出现的字数
+    var num = 0 ;
+    var number = "";
+    for(var k in json){
+        if(json[k]>num){
+            num = json[k];
+            number = k ;
+        }
+    }
+    console.log("出现次数："+num +"最多的字符："+ number);*/
+ var buffer=str.split('');
+ var arr=[];
+ for(var i=0;i<buffer.length;i++){
+     if(arr[buffer[i]]){
+         arr[buffer[i]]+=1;
+     }else arr[buffer[i]]=1;
+ }
+ console.log(arr);
+ var num=0;
+ var number='';
+ for(var k in arr){
+     if(arr[k]>num){
+         num=arr[k];
+         number=k;
+     }
+ }
+    console.log("出现次数："+num +"最多的字符："+ number);
+</script>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function Deque(){
+        this.dataStore = [];
+        //进队列，从头部和尾部添加数据
+        this.enqueue=function (element) {
+            this.dataStore.push(element);
+            this.dataStore.unshift(element);
+        }
+        //从队列头部和尾部删除数据，并且获得这个数据
+        this.dequeue=function () {
+           this.dataStore.splice(0,1);
+           this.dataStore.splice(this.dataStore.length-1,1);
+        }
+        //获得队列最前面和最后面的数据
+        this.front=function(){
+
+            return this.dataStore[this.dataStore.length-1];
+        }
+        this.front1=function(){
+            return this.dataStore[0];
+
+        }
+        //依次返回当前队列的数据
+        this.toString=function () {
+            return this.dataStore.toString();
+        }
+        //判断当前队列是否为空
+        this.empty=function () {
+            if(this.dataStore.length==0){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        //变量当前队列的数据
+        this.forEach=function (call) {
+            var length = this.dataStore.length;
+            for(var i=0;i<length;i++){
+                call(this.dataStore[i],i);
+            }
+        }
+        this.huiwen=function (data) {
+
+
+            let length=this.dataStore.length;
+            for(let i=length-1;i>=0;i--){
+                this.dataStore.push(this.data[i])
+            }
+            for(let j=0;j<length;j++){
+                if(this.data[j]!=this.dataStore[j]){
+              console.log('不是回文');
+                    return ;
+                }
+            }
+            console.log('是回文');
+            return ;
+        }
+
+
+
+
+    }
+    var  deque=new Deque();
+    deque.huiwen('assa');
+
+    </script>
+
+
+
+    </html>

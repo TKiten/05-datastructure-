@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>双链表(Double LinkList)</title>
+</head>
+<body>
+
+</body>
+<script>
+    /*
+  以下是双链表中的构造方法（The following is the construction method in the double-linked list）
+
+  *****************************************************************************************
+  this.insert()=insert//插入链表中(insert the node to the LinkList)
+  this.lastNode()=lastNode//找到链表的最后一个节点(find the last node of LinkList)
+  this.forEach()=forEach//正向遍历( forward traversal)
+  this.forEachReverse()=forEachReverse//反向遍历(Reverse traversal)
+  this.find() = find;////寻找链表中的某个节点并返回其节点（Find a node in the list and return its node）
+  this.findPrevious()=findPrevious//寻找链表中的某个节点的前一个节点并返回其节点（Find a node's previus in the list and return its node）
+  this.remove() = remove;//移除链表中的某个节点（remove a node in the list)
+  this.insertAfter()=insertAfter // 向链表中某个节点后面插入一个节点（insert a node after a node in the list）
+  this.insertBefore()=inserBefore    // 向链表中某个节点前面插入一个节点（insert a node before a node in the list）
+  this.advance()=advance  //将某个节点向前移动n位（Move a node forward by n bits）
+  this.back ()=back // //将某个节点向后移动n位（Move a node backward by n bits）
+
+  */
+    function Node(element) {
+        this.element = element;
+        this.next = null;
+        this.previous = null;
+    }
+        //双链表(Double LinkList)
+    function LList() {
+        this.head=new Node('head');
+        //插入链表中(insert the node to the LinkList)
+        this.insert=function (element) {
+            var node = new Node(element);
+            var lastnode=this.lastNode();
+            node.next=lastnode.next;
+            lastnode.next=node;
+            node.previous=lastnode;
+
+
+        }
+        //找到链表的最后一个节点(find the last node of LinkList)
+        this.lastNode=function () {
+            var lastnode=this.head;
+            while(lastnode.next!=null){
+                lastnode=lastnode.next;
+            }
+            return lastnode;
+        }
+        //正向遍历( forward traversal)
+        this.forEach=function (call) {
+            var node=this.head;
+            while(node!=null){
+                call(node);
+                node=node.next;
+            }
+        }
+        //反向遍历(Reverse traversal)
+        this.forEachReverse=function (call) {
+            var lastnode=this.lastNode();
+            while(lastnode!=null){
+                call(lastnode);
+                lastnode=lastnode.previous;
+            }
+
+        }
+        //寻找链表中的某个节点并返回其节点（Find a node in the list and return its node）
+        this.find=function (element){
+            var node=this.head;
+            while(node!=null&&node.element!=element){
+                node=node.next;
+            }
+            return node;
+        }
+        //移除链表中的某个节点（remove a node in the list)
+        this.remove=function (element) {
+            var currentNode=this.find(element);
+            var nextNode=currentNode.next;
+            var preNode=currentNode.previous;
+            preNode.next=nextNode;
+            if(nextNode!=null){
+                nextNode.previous=preNode;
+            }
+
+        }
+        // 向链表中某个节点后面插入一个节点（insert a node after a node in the list）
+        this.insertAfter=function (element,after){
+            var currentNode=this.find(after);
+            var newnode=new Node(element)
+            if(currentNode.next!=null)
+                currentNode.next.previous=newnode;
+
+            newnode.next=currentNode.next;
+            currentNode.next=newnode;
+            newnode.previous=currentNode;
+        }
+        // 向链表中某个节点前面插入一个节点（insert a node before a node in the list）
+        this.insertBefore=function (element,before){
+            var currentNode=this.find(before);
+            var newnode=new Node(element)
+            if(currentNode.previous!='head')
+               newnode.next=currentNode.previous.next;//将新节点的后驱赋值为当前节点的前驱的后驱（Assign the next node of the new node to the next node of the previous node of the current node）
+
+            currentNode.previous.next=newnode;//将当前节点的前驱的后驱赋值为新节点（Assign the driver of the current node's precursor to the new node）
+            newnode.previous=currentNode.previous;//将新节点的前驱赋值为当前节点的前驱（Assign the precursor of the new node to the precursor of the current node）
+            currentNode.previous=newnode;//将当前节点的前驱赋值为新节点（Assign the current node's precursor to the new node）
+        }
+        //将链表中的某个节点向前移动n位（Move a node forward by n bits）
+        this.advance=function(currElement,n){
+            var currentNode=this.find(currElement);
+            var preNode=currentNode.previous;
+            var buffer=preNode;
+            while(buffer.element!='head'&&n>0){
+                buffer=buffer.previous;
+                n--;
+            }
+            preNode.next=currentNode.next;
+            currentNode.next.previous=currentNode.previous;
+            currentNode.next=buffer.next;
+            buffer.next=currentNode;
+            currentNode.previous=buffer.next.previous;
+            buffer.next.previous=currentNode;
+        }
+        //将链表中的某个节点向后移动n位（Move a node backward by n bits）
+        this.back=function(currElement,n){
+            var currentNode=this.find(currElement);
+            var lastNode=currentNode;
+            while(lastNode.next!=null&&n>0){
+                lastNode=lastNode.next;
+                n--;
+            }
+            if(currentNode==lastNode){
+                return;
+            }
+            currentNode.previous.next=currentNode.next;
+            currentNode.next.previous=currentNode.previous;
+            currentNode.next=lastNode.next;
+            lastNode.next=currentNode;
+            currentNode.previous=lastNode.next.previous;
+            lastNode.next.previous=currentNode;
+
+        }
+    }
+    var list=new LList();
+    list.insert('你')
+    list.insert('好')
+    list.insert('明')
+    list.insert('天')
+    list.insert('!')
+
+    list.back('!',10)
+    //console.log(list.find('天1'));
+    list.forEach(function (item) {
+        console.log(item.element);
+    })
+</script>
+</html>

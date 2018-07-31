@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+class Person{
+    constructor() {
+     this.people=[];
+     this.person=[];
+    }
+    creat(){
+        for(var i=0;i<50;i++){
+            this.sex=Math.floor(Math.random()*2);
+            this.age=Math.ceil(Math.random()*50);
+            this.people[i]={sex:this.sex,age:this.age};
+        }
+    }
+    length(){
+        return this.people.length;
+    }
+    lengthperson(){
+        return this.person.length;
+    }
+    for(call){
+        let length=this.length();
+        for(let i=0;i<length;i++){
+            call(this.people[i]);
+        }
+    }
+    forEach(call){
+        let length=this.lengthperson();
+        for(let i=0;i<length;i++){
+            call(this.person[i]);
+        }
+    }
+   choose(sex,age,age1){
+       let length=this.length();
+       for(let i=0;i<length;i++){
+         if(this.people[i].sex==sex&&this.people[i].age>=age&&this.people[i].age<=age1){
+              this.person.push(this.people[i]);
+          }
+       }
+   }
+
+}
+let people=new Person();
+people.creat();
+people.choose(0,30,40);
+people.forEach(function (people) {
+   console.log(people.age,people.sex);
+})
+</script>
+</html>

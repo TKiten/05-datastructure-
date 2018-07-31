@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+   class stack{
+       constructor(data,num){
+           this.data=data;
+           this.num=num;
+       }
+       change(){
+           this.dataStore=[];
+           while(this.data>=this.num){
+               var buffer=this.data%this.num;
+               this.dataStore.push(buffer);
+               this.data=(this.data-buffer)/this.num;
+           }
+           this.dataStore.push(this.data);
+
+           for(let data of this.dataStore.reverse()){
+               console.log(data);
+           }
+       }
+
+   }
+   let stac=new stack(42,8);
+   stac.change();
+</script>
+</html>

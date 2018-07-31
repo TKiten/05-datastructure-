@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    class Stack{
+        constructor(data){
+            this.data=data;
+        }
+        change(){
+            this.dataStore=[...this.data];
+            var length=this.data.length;
+            for(let j=0;j<length;j++){
+                if(this.data[j]!=this.dataStore.reverse()[j]){
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+    let stack=new Stack('dada')
+    console.log(stack.change());
+</script>
+</html>

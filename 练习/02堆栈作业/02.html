@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    class Stack{
+        constructor(){
+            this.dataStore=[];
+        }
+        change(data,num){
+            while(data>=num){
+                var buffer=data%num;
+                this.dataStore.push(buffer);
+                data=(data-buffer)/num;
+            }
+            this.dataStore.push(data);
+        }
+        foreach(call){
+            let length=this.dataStore.length;
+            for(let i=length-1;i>=0;i--){
+                call(this.dataStore[i]);
+            }
+        }
+
+    }
+    let stack=new Stack();
+    stack.change(42,8);
+    stack.foreach(function (data) {
+        console.log(data);
+    })
+</script>
+</html>

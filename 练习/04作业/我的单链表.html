@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>单链表Single list</title>
+</head>
+<body>
+
+</body>
+<script>
+    /*
+    以下是单链表中的构造方法（The following is the construction method in the single-linked list）
+
+    *****************************************************************************************
+    this.insert()=insert//插入链表中(insert the node to the LinkList)
+    this.lastNode()=lastNode//找到链表的最后一个节点(find the last node of LinkList)
+    this.forEach()=forEach//正向遍历( forward traversal)
+    this.find() = find;////寻找链表中的某个节点并返回其节点（Find a node in the list and return its node）
+    this.findPrevious()=findPrevious//寻找链表中的某个节点的前一个节点并返回其节点（Find a node's previus in the list and return its node）
+    this.remove() = remove;//移除链表中的某个节点（remove a node in the list)
+    this.insertAfter()=insertAfter // 向链表中某个节点后面插入一个节点（insert a node after a node in the list）
+    this.insertBefore()=inserBefore    // 向链表中某个节点前面插入一个节点（insert a node before a node in the list）
+    this.advance()=advance  //将某个节点向前移动n位（Move a node forward by n bits）
+    this.back ()=back // //将某个节点向后移动n位（Move a node backward by n bits）
+
+    */
+    function Node(element) {
+        this.element = element;
+        this.next = null;
+    }
+//  单链表Single list
+    function LList() {
+        this.head = new Node("head");
+        //插入链表中(insert the node to the LinkList)
+        this.insert=function (data) {
+            //1,创建新的节点
+            var buffer = new Node(data);
+            //2,获得最后的节点
+            var last = this.findLast();
+            //3,把最后节点的next指向新节点
+            last.next=buffer;
+        }
+        //找到链表的最后一个节点(find the last node of LinkList)
+        this.findLast=function () {
+            var buffer= this.head;
+            while(buffer.next!=null){
+                buffer=buffer.next;
+            }
+            return buffer;
+        }
+        //正向遍历( forward traversal)
+        this.forEach=function (call) {
+            var buffer= this.head;
+            while(buffer!=null){
+                call(buffer);
+                buffer=buffer.next;
+            }
+        }
+        //寻找链表中的某个节点并返回其节点（Find a node in the list and return its node）
+        this.find=function (data) {
+            var buffer= this.head;
+            while(buffer!=null){
+                if(buffer.element==data){
+                    return buffer;
+                }
+                buffer=buffer.next;
+            }
+            return buffer;
+        }
+        //寻找链表中的某个节点的前一个节点并返回其节点（Find a node's previus in the list and return its node）
+        this.findPrevious=function (data) {
+            var buffer= this.head;
+            var node=null;
+            while(buffer!=null&&buffer.next!=null){
+                if(buffer.next.element==data){
+                    node=buffer;
+                    return node;
+                }
+                buffer=buffer.next;
+            }
+            return node;
+        }
+        //移除链表中的某个节点（remove a node in the list)
+        this.remove=function (data) {
+            let nextNode =this.find(data).next;
+            let preNode = this.findPrevious(data);
+
+            preNode.next=nextNode;
+        }
+        // 向链表中某个节点后面插入一个节点（insert a node after a node in the list）
+        this.insertAfter=function (element,after) {
+            //1,创建当前的节点
+            let node = new Node(element);
+            //2，获得after节点
+            let afterNode= this.find(after);
+            //3, afterNode的后面节点和当前节点链接在一起
+            node.next=afterNode.next;
+            //4，把当前节点连在afterNode节点后面
+            afterNode.next=node;
+        }
+        // 向链表中某个节点前面插入一个节点（insert a node before a node in the list）
+        this.insertBefore=function (element,before) {
+            //创建当前的节点
+            let node = new Node(element);
+            //获得before节点的前一个节点
+            let preNode= this.findPrevious(before);
+            //把before节点连到新节点的后面
+            node.next=preNode.next;
+            //把preNode节点和新节点连到一起
+            preNode.next=node;
+        }
+        //将某个节点向前移动n位（Move a node forward by n bits）
+        this.advance=function (currElement,n) {
+            var currentNode=this.find(currElement);
+            var buffer=this.findPrevious(currElement);
+            var preNode=buffer;
+            while(preNode.element!='head'&&n>0){
+                preNode=this.findPrevious(preNode.element);
+                n--;
+            }
+            buffer.next=currentNode.next;
+            currentNode.next=preNode.next;
+            preNode.next=currentNode;
+        }
+        // //将某个节点向后移动n位（Move a node backward by n bits）
+        this.back=function (currElement,n) {
+            var currentNode=this.find(currElement);
+            var preNode=this.findPrevious(currElement);
+            var buffer=currentNode;
+            while(buffer.next!=null&&n>0){
+                buffer=buffer.next;
+                n--;
+            }
+            preNode.next=currentNode.next;
+            currentNode.next=buffer.next;
+            buffer.next=currentNode;
+
+        }
+    }
+
+    let lList = new LList();
+    lList.insert("你");
+    lList.insert("在");
+    lList.insert("做");
+    lList.insert("什么啊");
+    lList.insert("什");
+    lList.back('做',1);
+    lList.forEach(function (node) {
+        console.log(node.element);
+    })
+</script>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    class Stack{
+        constructor(data){
+            this.data=data;
+        }
+        change(){
+            this.dataStore=[];
+            var length=this.data.length;
+            for(let i=length-1;i>=0;i--){
+                this.dataStore.push(this.data[i])
+            }
+            for(let j=0;j<length;j++){
+                if(this.data[j]!=this.dataStore[j]){
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+    let stack=new Stack('dad')
+    console.log(stack.change());
+</script>
+</html>

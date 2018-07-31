@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>随机生成指定长度的字符串</h1>
+</body>
+<script>
+//     大写字母A-Z对应的ASCII码值是65-90
+//     小写字母a-z对应的ASCII码值是97-122
+//
+//     将字母转为ascii嘛的方法：
+//
+//      var str = "A";
+//     str.charCodeAt();  // 65
+//
+//     var str1 = 'a';
+//     str1.charCodeAt();  // 97
+//     将ascii码转为对应字母的方法：
+//      var num = 97;
+//     String.fromCharCode(num);  // 'a'
+//
+//     var num1 = 100;
+//     String.fromCharCode(num1);  // 'd'
+
+    var data='';
+    for(var i=0;i<10;i++){
+        var num=Math.floor(Math.random()*2)
+        var random;
+        if(num=0)
+        random=65+Math.floor(Math.random()*25);
+        else random=97+Math.floor(Math.random()*25);
+        data+=String.fromCharCode(random);
+
+    }
+    console.log(data)
+
+</script>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    class Sort{
+        constructor(){
+            this.bin0=[];
+            this.bin1=[];
+            this.bin2=[];
+            this.bin3=[];
+            this.bin4=[];
+            this.bin5=[];
+            this.bin6=[];
+            this.bin7=[];
+            this.bin8=[];
+            this.bin9=[];
+
+        }
+        mysort1(data){
+            var buffer=data.split(' ');
+            var length=buffer.length;
+            for(let i=0;i<length;i++){
+                var a=buffer[i]%10;
+                switch(a){
+                    case 0:
+                        this.bin0.push(buffer[i]);
+                        break;
+                    case 1:
+                        this.bin1.push(buffer[i]);
+                        break;
+                    case 2:
+                        this.bin2.push(buffer[i]);
+                        break;
+                    case 3:
+                        this.bin3.push(buffer[i]);
+                        break;
+                    case 4:
+                        this.bin4.push(buffer[i]);
+                        break;
+                    case 5:
+                        this.bin5.push(buffer[i]);
+                        break;
+                    case 6:
+                        this.bin6.push(buffer[i]);
+                        break;
+                    case 7:
+                        this.bin7.push(buffer[i]);
+                        break;
+                    case 8:
+                        this.bin8.push(buffer[i]);
+                        break;
+                    case 9:
+                        this.bin9.push(buffer[i]);
+                        break;
+                }
+            }
+            this.buffer1=[];
+        for(let i=0;i<this.mylength(this.bin0);i++){
+            this.buffer1.push(this.bin0[i]);
+            }
+            for(let i=0;i<this.mylength(this.bin1);i++){
+                this.buffer1.push(this.bin1[i]);
+            }
+            for(let i=0;i<this.mylength(this.bin2);i++){
+                this.buffer1.push(this.bin2[i]);
+            }
+            for(let i=0;i<this.mylength(this.bin3);i++){
+                this.buffer1.push(this.bin3[i]);
+            }
+            for(let i=0;i<this.mylength(this.bin4);i++){
+                this.buffer1.push(this.bin4[i]);
+            }
+            for(let i=0;i<this.mylength(this.bin5);i++){
+                this.buffer1.push(this.bin5[i]);
+            }
+            for(let i=0;i<this.mylength(this.bin6);i++){
+                this.buffer1.push(this.bin6[i]);
+            }
+            for(let i=0;i<this.mylength(this.bin7);i++){
+                this.buffer1.push(this.bin7[i]);
+            }
+            for(let i=0;i<this.mylength(this.bin8);i++){
+                this.buffer1.push(this.bin8[i]);
+            }
+            for(let i=0;i<this.mylength(this.bin9);i++){
+                this.buffer1.push(this.bin9[i]);
+            }
+
+            this.bin0=[];
+            this.bin1=[];
+            this.bin2=[];
+            this.bin3=[];
+            this.bin4=[];
+            this.bin5=[];
+            this.bin6=[];
+            this.bin7=[];
+            this.bin8=[];
+            this.bin9=[];
+            for(let i=0;i<length;i++){
+                var b=Math.floor(this.buffer1[i]/10);
+                switch(b){
+                    case 0:
+                        this.bin0.push(this.buffer1[i]);
+                        break;
+                    case 1:
+                        this.bin1.push(this.buffer1[i]);
+                        break;
+                    case 2:
+                        this.bin2.push(this.buffer1[i]);
+                        break;
+                    case 3:
+                        this.bin3.push(this.buffer1[i]);
+                        break;
+                    case 4:
+                        this.bin4.push(this.buffer1[i]);
+                        break;
+                    case 5:
+                        this.bin5.push(this.buffer1[i]);
+                        break;
+                    case 6:
+                        this.bin6.push(this.buffer1[i]);
+                        break;
+                    case 7:
+                        this.bin7.push(this.buffer1[i]);
+                        break;
+                    case 8:
+                        this.bin8.push(this.buffer1[i]);
+                        break;
+                    case 9:
+                        this.bin9.push(this.buffer1[i]);
+                        break;
+                }
+            }
+            this.buffer2=[];
+            for(let i=0;i<this.mylength(this.bin0);i++){
+                this.buffer2.push(this.bin0[i]);
+            }
+            for(let i=0;i<this.mylength(this.bin1);i++){
+                this.buffer2.push(this.bin1[i]);
+            }
+            for(let i=0;i<this.mylength(this.bin2);i++){
+                this.buffer2.push(this.bin2[i]);
+            }
+            for(let i=0;i<this.mylength(this.bin3);i++){
+                this.buffer2.push(this.bin3[i]);
+            }
+            for(let i=0;i<this.mylength(this.bin4);i++){
+                this.buffer2.push(this.bin4[i]);
+            }
+            for(let i=0;i<this.mylength(this.bin5);i++){
+                this.buffer2.push(this.bin5[i]);
+            }
+            for(let i=0;i<this.mylength(this.bin6);i++){
+                this.buffer2.push(this.bin6[i]);
+            }
+            for(let i=0;i<this.mylength(this.bin7);i++){
+                this.buffer2.push(this.bin7[i]);
+            }
+            for(let i=0;i<this.mylength(this.bin8);i++){
+                this.buffer2.push(this.bin8[i]);
+            }
+            for(let i=0;i<this.mylength(this.bin9);i++){
+                this.buffer2.push(this.bin9[i]);
+            }
+            return this.buffer2;
+        }
+
+        mylength(data){
+            return data.length;
+        }
+
+
+    }
+    let sort=new Sort();
+    console.log(sort.mysort1('12 34 43 23 34 56 78').toString());
+</script>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    class Stack{
+        constructor(){
+            this.data1=[{sex:'F',name:'Allison McMillan'},{sex:'F',name:'Cheryl Ferenback'},{sex:'F',name:'Jennifer Ingram'},{sex:'F',name:'Aurora Adney'}];
+            this.data2=[{sex:'M',name:'Frank Opitz'},{sex:'M',name:'Mason McMillan'},{sex:'M',name:'Clayton Ruff'},{sex:'M',name:'Raymond Williams'},{sex:'M',name:'Bryan Frazer'},{sex:'M',name:'David Durr'}];
+        }
+        dance(){
+            let length1
+            let length2
+            while(length1!=0&&length2!=0){
+                console.log('有请'+this.data1.shift().name+'和'+this.data2.shift().name+'出场！');
+                length1=this.data1.length;
+                length2=this.data2.length;
+            }
+            console.log("舞会结束！")
+        }
+    }
+    let stack=new Stack();
+    stack.dance();
+</script>
+</html>

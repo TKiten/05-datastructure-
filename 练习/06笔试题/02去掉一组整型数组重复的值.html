@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>去掉一组整型数组重复的值</h1>
+</body>
+<script>
+    var buffer=[1,13,24,11,11,14,1,2];
+    var data=[];
+    for(var i=0;i<buffer.length;i++){
+        if(data.indexOf(buffer[i])<0)
+            data.push(buffer[i])
+    }
+    console.log(data)
+</script>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    class Mysort{
+
+        constructor(){
+            this.dataStore = [];
+        }
+        append(data){
+            this.dataStore[this.Mylength()] = data;
+        }
+        Mylength(){
+            this.length=this.dataStore.length;
+            return this.length;
+        }
+        forEach(call){
+            let length=this.Mylength();
+            for(let i=0;i<length;i++){
+                call(this.dataStore[i]);
+            }
+        }
+        upsort(data){
+            var  length=this.Mylength();
+            if(length==0){
+                this.dataStore[this.Mylength()] = data;
+                return;
+            }
+            for(let i=0;i<length;i++){
+                if(data<=this.dataStore[i]){
+                    for(let j=length-1;j>=i;j--){
+                        this.dataStore[j+1]=this.dataStore[j];
+                    }
+                    this.dataStore[i]=data;
+                    return;
+                }
+
+            }
+            this.dataStore[length]=data;
+
+
+        }
+    }
+    let list=new Mysort();
+
+    list.upsort(1)
+    list.upsort(0)
+ list.forEach(function (data) {
+     console.log(data);
+ })
+</script>
+</html>

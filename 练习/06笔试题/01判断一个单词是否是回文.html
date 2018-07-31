@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>判断一个单词是否是回文</h1>
+</body>
+<script>
+    function HuiWen() {
+        // var buffer=[...data];
+        // var length=buffer.length;
+        // var index=0;
+        // for(var i=length-1;i>=0;i--){
+        //     if(buffer[i]==data[0]&&index<length)
+        //         index++;
+        // }
+        // if(index==length)
+        //     console.log("是回文")
+        // else console.log("不是回文")
+        this.judgement=function (data) {
+            var buffer=[...data];
+            var buffer2=buffer.reverse();
+            var string=buffer2.join('');
+            if(data==string)
+                console.log('是回文')
+            else console.log('不是回文')
+        }
+    }
+    var huiwen=new HuiWen()
+    huiwen.judgement('assssgga')
+
+/*    function check(str) {
+        str = str.replace(/\W/g,'').toLowerCase();
+        return str === str.split('').reverse().join()
+    }*/
+    // class Stack{
+    //     //构造函数
+    //     constructor(data){
+    //         this.data=data;
+    //     }
+    //     //判定回文的函数
+    //     change(){
+    //         //初始化一个栈数组用来存放倒序的数据
+    //         this.dataStore=[];
+    //         //获得数据的长度
+    //         var length=this.data.length;
+    //         //循环遍历将data中的数据放入this.dataStore中
+    //         for(let i=length-1;i>=0;i--){
+    //             this.dataStore.push(this.data[i])
+    //         }
+    //         //判断是否一一对应，是回文数就返回true不是就返回false
+    //         for(let j=0;j<length;j++){
+    //             if(this.data[j]!=this.dataStore[j]){
+    //                 return false;
+    //             }
+    //         }
+    //         return true;
+    //     }
+    // }
+    // let stack=new Stack('dad')
+    // console.log(stack.change());
+
+</script>
+</html>
